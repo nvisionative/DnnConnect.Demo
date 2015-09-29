@@ -9,14 +9,14 @@
     <XmlRead Prefix="n"
                    Namespace="http://schemas.microsoft.com/developer/msbuild/2003"
                    XPath="dotnetnuke/packages/package/@version"
-                   XmlFileName="$(DNNFileName).dnn">
+                   XmlFileName="$(DNNFileName)">
       <Output TaskParameter="Value" PropertyName="Version" />
     </XmlRead>
-    <ExtensionPackager Manifest="$(DNNFileName).dnn" WorkingFolder="$(MSBuildProjectDirectory)\">
+    <ExtensionPackager Manifest="$(DNNFileName)" WorkingFolder="$(MSBuildProjectDirectory)\">
       <Output TaskParameter="PackageFiles" PropertyName="PackageFiles">
       </Output>
     </ExtensionPackager>
-    <Copy SourceFiles="$(DNNFileName).dnn" DestinationFolder="$(MSBuildProjectDirectory)\Package" />
+    <Copy SourceFiles="$(DNNFileName)" DestinationFolder="$(MSBuildProjectDirectory)\Package" />
     <Zip Files="@(Resources)" WorkingDirectory="$(MSBuildProjectDirectory)" ZipFileName="$(MSBuildProjectDirectory)\Package\Resources.zip" />
     <ItemGroup>
       <LicenseFiles Include="license.txt"/>
